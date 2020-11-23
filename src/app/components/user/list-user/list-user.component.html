@@ -1,0 +1,111 @@
+<!-- <p>trainer-service-list works!</p> -->
+<app-loader *ngIf="!loader"></app-loader>
+<div class="main-detail">
+    <div class="container-fluid">
+        <div class="main-dashboard-table">
+            
+            <div class="row mb-4">
+                <div class="col-md-8">                    
+                    <div class="dashbrd-hdr">
+                        <h3>User List</h3> 
+                    </div>
+                </div>
+                <!-- <a href="javascript:void(0)" (click)="signOut()">Logout</a> -->
+
+                <div class="col-md-4"> 
+                    <div class="tbl-filter-data">
+                        <a href="javascript:void(0)" (click)="signOut()">Logout</a>
+                        <ul>
+                            <li>
+                                <div class="filter">
+                                    <a href="javascript:void(0)" (click)="filterSearchSec()"><span class="icon-filter"></span></a>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <ng-container *ngIf="advSearch" class="tbl-filter-data">
+                <div class="filter-dash">
+                     
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="user-details">
+                                <mat-form-field class="cab-data">
+                                    <mat-label>Search User Name</mat-label> 
+                                <input type="text" matInput [(ngModel)]="username" placeholder="Search by Name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="filter-search">
+                            <a href="javascript:void(0)" (click)="filterSearchSubmit()" class="search-fil">SEARCH</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </ng-container>
+            
+        
+        <div class="table-dashboard-cont">
+            <div class="row">
+                <div class="col-md-12">
+                    <table>
+                        <tr>
+                            <th>Name
+                                <a href="javascript:void(0)" (click)="sortedList(urserList, 'fname', curSortDir.fname)">
+                                    <span class="icon-arrow-down" *ngIf="!curSortDir.fname"></span>
+                                    <span class="icon-arrow-up"  *ngIf="curSortDir.fname"></span>
+                                </a>
+                            </th>
+                            <th>Image</th>
+                            <th>Email
+                                <a href="javascript:void(0)" (click)="sortedList(urserList, 'email', curSortDir.email)">
+                                    <span class="icon-arrow-down" *ngIf="!curSortDir.email"></span>
+                                    <span class="icon-arrow-up"  *ngIf="curSortDir.email"></span>
+                                </a>
+                            </th>
+                            
+                            <th>Action</th>
+                        </tr>
+                    <ng-container *ngIf="urserList != undefined && urserList.length > 0">
+                        <tr *ngFor="let item of urserList | paginate: { itemsPerPage: pageLimit, totalItems: pageTotal, currentPage: pageCurrentNumber }; let i2 = index;">
+                            
+                            <td>
+                                {{item.fname}} {{item.lname}}
+                            </td>
+
+                            <td><img width="50px" src="../../../../assets/images/avatar.png"/></td>
+
+                            <td>
+                                {{item.email}}
+                            </td>
+                            
+                            <td class="action fnt-clr">
+                                <ng-container>
+                                    <a href="javascript:void(0)" alt="Delete" (click)="deleteRow(item.id)"><span class="icon-delete"></span>Delete</a>
+                                </ng-container>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    <ng-container *ngIf="urserList?.length == 0">
+                        <tr>
+                            <td colspan="5">
+                                No Records
+                            </td>
+                        </tr>
+                    </ng-container>
+                    
+                    </table>
+                    <ng-container *ngIf="urserList != undefined && urserList.length > 0" >
+                        <pagination-controls (pageChange)="pageCurrentNumber = $event"></pagination-controls>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+</div>

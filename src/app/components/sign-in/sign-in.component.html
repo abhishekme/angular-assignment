@@ -1,0 +1,62 @@
+
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row py-5">
+          <div class="col-md-12">
+            <form [formGroup]="signin" (ngSubmit)="createLogin()">
+                  <div class="login-frm">
+                      
+                  <div class="login-data">
+                      
+                      <div *ngIf="errorMessage">
+                          <div class="alert alert-danger" role="alert">
+                            {{errorMessage}}
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="usr-details">
+                                  <mat-form-field class="cab-data" >
+                                      <mat-label>Registered Email Address</mat-label>
+                                      <input matInput  type="text"
+                                       formControlName="email" required placeholder="Email">
+                                  </mat-form-field>                                    
+                              </div>
+                          </div>
+                      </div> 
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="usr-details">
+                                  <mat-form-field class="cab-data change-password" >
+                                      <mat-label>Password</mat-label>
+                                      <input matInput [type]="passblock ? 'text' : 'password'" 
+                                      autocomplete='off' formControlName="password" required  placeholder="Password">
+                                      <a href="javascript:void(0)" (click)="passwordDisplay()"><span class="icon-invisible visible-pwd"></span></a>
+                                      
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="login-bttn">
+                                  <button type="submit" class="login">LOGIN</button>
+                              </div>
+                          </div>
+                      </div>               
+                      <div class="row">
+                          
+                          <div class="col-md-12">
+                              <div class="no-acc">
+                                  <p>Don't have an account? <a href="javascript:void(0)" routerLink="/sign-up">Register Now</a></p>
+                              </div>
+                          </div>
+                      </div>                           
+                          
+                    </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

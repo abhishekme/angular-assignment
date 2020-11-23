@@ -1,0 +1,50 @@
+{
+  "user": [
+    {
+      "fname": "Atest1",
+      "lname": "testing",
+      "email": "atest1@navsoft.in",
+      "password": "Password123!@#",
+      "id": 1
+    },
+    {
+      "fname": "Subhankar",
+      "lname": "Chaulay",
+      "email": "subhankar@navsoft.in",
+      "password": "Password123!@#",
+      "id": 2
+    },
+    {
+      "fname": "Etest5",
+      "lname": "testings5",
+      "email": "etestings5@erewr.in",
+      "password": "Password123!@#",
+      "id": 6
+    },
+    {
+      "fname": "Ftest6",
+      "lname": "ftestings6",
+      "email": "testings6@erewr.in",
+      "password": "Password123!@#",
+      "id": 7
+    },
+    {
+      "fname": "Etestsss",
+      "lname": "erertt",
+      "mobile": "",
+      "code": "",
+      "email": "etestings2@erewr.in",
+      "password": "Password123!@#",
+      "id": 8
+    },
+    {
+      "fname": "Btest",
+      "lname": "sdffs",
+      "mobile": "",
+      "code": "",
+      "email": "btest@navsoft.in",
+      "password": "Password123!@#",
+      "id": 9
+    }
+  ]
+}

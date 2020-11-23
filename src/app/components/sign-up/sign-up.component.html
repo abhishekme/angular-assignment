@@ -1,0 +1,79 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row py-5">
+            <div class="col-lg-12 col-md-12">
+                <form #ngForm="ngForm" (ngSubmit)="onSubmit(ngForm)" autocomplete="off">
+                    <div class="login-frm">
+                        
+                        <div class="login-data">
+                            <div class="login-hdr">
+                                <h3>Sign up to MY CRUD PROJECT</h3>
+                            </div>
+                            
+                            <div class="usr-details">
+                                <mat-form-field class="cab-data">
+                                    <mat-label>Email Address</mat-label>
+                                    <input matInput name="email" required [(ngModel)]="userData.email" placeholder="Email Address">
+                                </mat-form-field>
+
+                                <p class="error" *ngIf="userData.email && !Service.checkInput('email',userData.email)">Please Enter Correct Email Id</p>
+
+                                <mat-form-field class="cab-data">
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput name="fname" required [(ngModel)]="userData.fname" (keypress)="Service.inputFilter($event, Service.regExName)" (ngModelChange)="updateValue($event)"  ngModelOptions="{'standalone':'true'}" placeholder="First Name">
+                                </mat-form-field>
+
+                                <mat-form-field class="cab-data">
+                                  <mat-label>Last Name</mat-label>
+                                  <input matInput name="lname" (keypress)="Service.inputFilter($event, Service.regExName)" required [(ngModel)]="userData.lname" placeholder="Last Name">
+                              </mat-form-field>
+                                
+                                <mat-form-field class="cab-data change-password">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput [type]="passblock ? 'text' : 'password'" placeholder="Password" required (keyup)="checkPassword($event,'password')" name="password" [(ngModel)]="changePasswordForm.password">
+                                    <a href="javascript:void(0)" (click)="passwordDisplay('normal')"><span class="icon-invisible visible-pwd"></span></a>
+                                </mat-form-field>
+                                    <div class="password">
+                                        <ul class="passwordsuggestion pl-0">
+                                            <li [ngClass]="(changePasswordForm.passwordStrength['password'].pcLengthValue == 1) ? 'greensuggest' : (changePasswordForm.password == '') ? '' : 'redsuggest'"><div>8+</div></li>
+                                            <li [ngClass]="(changePasswordForm.passwordStrength['password'].pcLowerValue == 1) ? 'greensuggest' : (changePasswordForm.password == '') ? '' : 'redsuggest'"><div>a-z</div></li>
+                                            <li [ngClass]="(changePasswordForm.passwordStrength['password'].pcUpperValue == 1) ? 'greensuggest' : (changePasswordForm.password == '') ? '' : 'redsuggest'"><div>A-Z</div></li>
+                                            <li [ngClass]="(changePasswordForm.passwordStrength['password'].pcNumberValue == 1) ? 'greensuggest' : (changePasswordForm.password == '') ? '' : 'redsuggest'"><div>0-9</div></li>
+                                            <li [ngClass]="(changePasswordForm.passwordStrength['password'].pcSpecialValue == 1) ? 'greensuggest' : (changePasswordForm.password == '') ? '' : 'redsuggest'"><div>!#?</div></li>
+                                        </ul>
+                                    </div>
+                                
+                                <mat-form-field class="cab-data">
+                                    <mat-label>Confirm Password</mat-label>
+                                    <input matInput [type]="passConfBlock ? 'text' : 'password'" placeholder="Confirm Password" name="cpassword" required (keyup)="checkPassword($event,'cpassword')" [(ngModel)]="changePasswordForm.cpassword">
+                                    <a href="javascript:void(0)" (click)="passwordDisplay('confirm')"><span class="icon-invisible visible-pwd"></span></a>
+                                    
+                                </mat-form-field>
+
+                                <div class="password">
+                                    <ul class="passwordsuggestion pl-0">
+                                        <li [ngClass]="(changePasswordForm.passwordStrength['cpassword'].pcLengthValue == 1) ? 'greensuggest' : (changePasswordForm.cpassword == '') ? '' : 'redsuggest'"><div>8+</div></li>
+                                        <li [ngClass]="(changePasswordForm.passwordStrength['cpassword'].pcLowerValue == 1) ? 'greensuggest' : (changePasswordForm.cpassword == '') ? '' : 'redsuggest'"><div>a-z</div></li>
+                                        <li [ngClass]="(changePasswordForm.passwordStrength['cpassword'].pcUpperValue == 1) ? 'greensuggest' : (changePasswordForm.cpassword == '') ? '' : 'redsuggest'"><div>A-Z</div></li>
+                                        <li [ngClass]="(changePasswordForm.passwordStrength['cpassword'].pcNumberValue == 1) ? 'greensuggest' : (changePasswordForm.cpassword == '') ? '' : 'redsuggest'"><div>0-9</div></li>
+                                        <li [ngClass]="(changePasswordForm.passwordStrength['cpassword'].pcSpecialValue == 1) ? 'greensuggest' : (changePasswordForm.cpassword == '') ? '' : 'redsuggest'"><div>!#?</div></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            
+                            <div class="login-bttn">
+                                <button type="submit" class="login">REGISTER</button>
+                            </div>
+                            <div class="no-acc">
+                                <p>Already have an account? <a href="javascript:void(0)" routerLink="/sign-in">Login Now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
